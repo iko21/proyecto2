@@ -1,0 +1,69 @@
+# depslib dependency file v1.0
+1395912740 source:/home/mac21/Desktop/programaing/Altara_Planet/main.cpp
+	"SDL/SDL.h"
+	"SDL/SDL_image.h"
+	<cstdlib>
+	<string>
+	<vector>
+
+1395873789 source:/home/mac21/Desktop/programaing/Altara_Planet/enemigos.cpp
+	"enemigos.h"
+
+1395873892 /home/mac21/Desktop/programaing/Altara_Planet/enemigos.h
+
+1395913822 source:/home/jaime/Desktop/proyecto-master/main.cpp
+	"SDL/SDL.h"
+	"SDL/SDL_image.h"
+	<cstdlib>
+	<string>
+	<vector>
+
+1395920676 source:/home/jaime/Desktop/prueba proyecto/proyecto-master/main.cpp
+	"SDL/SDL.h"
+	"SDL/SDL_image.h"
+	<cstdlib>
+	<string>
+	<vector>
+	"Pelotita.h"
+	"Lista.h"
+	<string>
+
+1393364906 source:/home/jaime/Desktop/prueba proyecto/proyecto-master/Lista.cpp
+	"Lista.h"
+
+1393364906 /home/jaime/Desktop/prueba proyecto/proyecto-master/Lista.h
+	"Pelotita.h"
+
+1395916299 /home/jaime/Desktop/prueba proyecto/proyecto-master/Pelotita.h
+	"SDL/SDL.h"
+
+1395921588 source:/home/jaime/Desktop/prueba proyecto/proyecto-master/Pelotita.cpp
+	"Pelotita.h"
+
+1395949167 source:/home/mac21/Desktop/programaing/proyecto/prueba_proyecto-master/Lista.cpp
+	"Lista.h"
+
+1395934338 /home/mac21/Desktop/programaing/proyecto/prueba_proyecto-master/Lista.h
+	"Pelotita.h"
+
+1395949302 /home/mac21/Desktop/programaing/proyecto/prueba_proyecto-master/Pelotita.h
+	"SDL/SDL.h"
+	<iostream>
+
+1395922300 source:/home/mac21/Desktop/programaing/proyecto/prueba_proyecto-master/Pelotita.cpp
+	"Pelotita.h"
+
+1395948175 source:/home/mac21/Desktop/programaing/proyecto/prueba_proyecto-master/main.cpp
+	"SDL/SDL.h"
+	"SDL/SDL_image.h"
+	<cstdlib>
+	<string>
+	<vector>
+	"Pelotita.h"
+	"Lista.h"
+	<string>
+	"SDL/SDL_ttf.h"
+	<sstream>
+	<iostream>
+	<fstream>
+
