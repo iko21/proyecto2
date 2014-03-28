@@ -59,7 +59,7 @@ bool Lista::detectarClick(int x,int y)
 {
     if(x == -1 || y == -1)
         return false;
-        x+=1;
+        x+=175;
         y+=25;
     int cont=0;
     for(Pelotita*t=inicio;

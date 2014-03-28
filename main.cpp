@@ -10,6 +10,9 @@
 #include <sstream>
 #include <iostream>
 #include <fstream>
+#include "allien.h"
+#include "llama.h"
+#include "piranha.h"
 
 using namespace std;
 
@@ -26,6 +29,9 @@ SDL_Surface *cohetio = NULL;
 SDL_Surface *cohe[5];
 SDL_Surface *cohemar[4];
 SDL_Surface *aster[4];
+SDL_Surface *ali=NULL;
+SDL_Surface *fuego=NULL;
+SDL_Surface *pira=NULL;
 SDL_Surface *pelotita_azul;
 SDL_Surface *pelotita_roja;
 SDL_Surface *lose=NULL;
@@ -35,16 +41,29 @@ SDL_Surface *puntaje=NULL;
 SDL_Surface *selva=NULL;
 SDL_Surface *agua=NULL;
 SDL_Surface *desierto=NULL;
+SDL_Surface *cielo=NULL;
 SDL_Color textColor={225, 225, 255 };
 TTF_Font *font=NULL;
 SDL_Surface *msj=NULL;
+SDL_Surface *message= NULL;
+
 
 SDL_Event *event;
 
 
 SDL_Surface *load_image( std::string filename )
 {
-    return IMG_Load(filename.c_str());
+    //The image that's loaded
+    SDL_Surface* loadedImage = NULL;
+    //The optimized surface that will be used
+    SDL_Surface* optimizedImage = NULL;
+    //Load the image l
+    loadedImage = IMG_Load( filename.c_str() );
+    //If the image loaded
+    if( loadedImage != NULL )
+
+             //Return the optimized surface
+    return loadedImage;
 }
 
 void apply_surface( int x, int y, SDL_Surface* source, SDL_Surface* destination )
@@ -67,7 +86,7 @@ bool init()
     {
         return false;
     }
-    TTF_Init();
+
 
     //Set up the screen
     screen = SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE );
@@ -78,6 +97,9 @@ bool init()
         return false;
     }
 
+    if( TTF_Init() == -1 ) {
+        return false;
+    }
     //Set the window caption
     SDL_WM_SetCaption( "PNG test", NULL );
 
@@ -92,6 +114,7 @@ void clean_up()
     SDL_FreeSurface(selva);
     SDL_FreeSurface(desierto);
     SDL_FreeSurface(agua);
+    SDL_FreeSurface(cielo);
     SDL_FreeSurface( cohe[0] );
     SDL_FreeSurface( cohe[1] );
     SDL_FreeSurface( cohe[2] );
@@ -101,6 +124,7 @@ void clean_up()
     SDL_FreeSurface( cohemar[1] );
     SDL_FreeSurface( cohemar[2] );
     SDL_FreeSurface( cohemar[3] );
+    SDL_FreeSurface(ali);
     SDL_FreeSurface( aster[0] );
     SDL_FreeSurface( aster[1] );
     SDL_FreeSurface( aster[2] );
@@ -118,11 +142,24 @@ string refreshScore(int score)
     return ss.str();
 }
 
+bool load_files() {
+    //Load the background image
+    SDL_Surface *background = load_image( "background.png" );
+    //Open the font
+    font = TTF_OpenFont( "lazy.ttf", 28 );
+    //If there was a problem in loading the background
+    if( background == NULL ) { return false; }
+    //If there was an error in loading the font
+    if( font == NULL ) { return false; }
+    //If everything loaded fine
+    return true;
+}
+
 
 int main( int argc, char* args[] )
 {
 
-  ofstream fs("scores.txt", ios::app);
+
 
 do{
     //Initialize
@@ -138,6 +175,7 @@ do{
     selva= load_image("selva.png");
     desierto=load_image("desierto.png");
     agua=load_image("agua.png");
+    cielo=load_image("cielo.png");
     cohetio = load_image("cohete.png");
     lose=load_image("lose.png");
     menu=IMG_Load("menu.jpg");
@@ -157,7 +195,9 @@ do{
     cohemar[1]= load_image( "cohemar2.png" );
     cohemar[2]= load_image( "cohemar3.png" );
     cohemar[3]= load_image( "cohemar4.png" );
-
+    ali=load_image("alien.png");
+    fuego=load_image("llama.png");
+    pira=load_image("pira.png");
 
     pelotita_azul=load_image("aster1.png");
     pelotita_roja=load_image("aster1.png");
@@ -175,7 +215,7 @@ do{
 
     int navecarril = 3;
     int navecursor = 228;
-
+     int fre=15;
 
     int a2=0;
     int b2=0;
@@ -186,7 +226,7 @@ do{
     int ai = 0;
     int asterfre=500;
     int ciclo=0;
-
+    int y3=0;
     int tempo;
 
     int frame=0;
@@ -221,7 +261,22 @@ do{
         }
         if(keystates[SDLK_2])
         {
+            char cadena[120];
+
+            ifstream fe("scores.txt");
+            fe.getline(cadena,120);
+
+            message = TTF_RenderText_Solid(font,cadena,textColor);
+            if(message==NULL){
+                exit(0);
+            }
             apply_surface(0,0,puntaje,screen);
+            apply_surface(220,250,message,screen);
+
+            if(SDL_Flip(screen)==-1){
+                return 1;
+            }
+
         }
         if(keystates[SDLK_3])
         {
@@ -245,11 +300,24 @@ do{
         int x_pos=rand()%540;
         int y_pos=rand()%480;
 
+        if(score>600)
+        {
+            fre=8;
+        }
 
         //If there's events to handle
-        if(frame%10==0){
-        l.agregar(new Pelotita(asterfre,y_pos,10,10,pelotita_azul));
-
+        if(frame%fre==0){
+            if(score<200)
+            {
+                l.agregar(new Pelotita(asterfre,y_pos,10,10,pelotita_azul));
+            }else if(score>=200 && score<400){
+                l.agregar(new allien(asterfre, y_pos, 20, 20, ali));
+            }else if(score>=400 && score<600){
+                l.agregar(new llama(asterfre,y_pos, 20, 20, fuego));
+            }else
+            {
+                l.agregar(new piranha(asterfre,y_pos, 23, 23,pira));
+            }
         }
 
         //____________________________________________________________________________
@@ -257,6 +325,13 @@ do{
 
 
         int ys = rand()%401;
+            if(ys%3==0)
+           {
+            y3=0;
+           }else
+           {
+               y3=400;
+           }
         ciclo++;
         //If there was a problem in loading the image
         if( cohe[ci] == NULL )
@@ -333,24 +408,57 @@ do{
         } else if(score>=400 && score<600)
         {
            apply_surface(a2,b2, desierto,screen);
-        }else if(score>=600)
+        }else if(score>=600 && score<800)
         {
            apply_surface(a2,b2, agua,screen);
+        }else
+        {
+             apply_surface(a2,b2, cielo,screen);
         }
 
 
         l.moverTodos();
         l.imprimirTodos(screen);
-        if(score>=600)
+        if(score>=600 && score<800)
         {
             apply_surface(a,navecarril,cohemar[co],screen);
-        }else
+        }
+        else
         {
             apply_surface( a, navecarril, cohe[ci], screen );
         }
+
         if(l.detectarClick(a,navecarril)==true)
         {
-            fs << score <<" ";
+            ifstream is ("scores.txt");
+            int pos[3];
+            int c=0;
+            while (is >> pos[c])
+                c++;
+            if (score > pos[0])
+                {
+                    pos[2]=pos[1];
+                    pos[1]=pos[0];
+                    pos[0]=score;
+                }
+                else if(score > pos[1])
+                {
+                    pos[2]=pos[1];
+                    pos[1]=score;
+                }
+                else if (score > pos[2])
+                {
+                    pos[2]=score;
+                }
+                is.close();
+
+
+            ofstream fs("scores.txt");
+
+            for (int i=0; i<3; i++)
+            {
+                fs<< pos[i] << ' ';
+            }
             fs.close();
             for(int i=0; i<500; i++)
             {
@@ -388,6 +496,7 @@ do{
         SDL_FreeSurface(msj);
 
     }
+
 
 
     //Free the surface and quit SDL

@@ -40,20 +40,19 @@
 1395921588 source:/home/jaime/Desktop/prueba proyecto/proyecto-master/Pelotita.cpp
 	"Pelotita.h"
 
-1395949167 source:/home/mac21/Desktop/programaing/proyecto/prueba_proyecto-master/Lista.cpp
+1395952333 source:/home/mac21/Desktop/programaing/proyecto/prueba_proyecto-master/Lista.cpp
 	"Lista.h"
 
-1395934338 /home/mac21/Desktop/programaing/proyecto/prueba_proyecto-master/Lista.h
+1395949477 /home/mac21/Desktop/programaing/proyecto/prueba_proyecto-master/Lista.h
 	"Pelotita.h"
 
-1395949302 /home/mac21/Desktop/programaing/proyecto/prueba_proyecto-master/Pelotita.h
+1395955069 /home/mac21/Desktop/programaing/proyecto/prueba_proyecto-master/Pelotita.h
 	"SDL/SDL.h"
-	<iostream>
 
-1395922300 source:/home/mac21/Desktop/programaing/proyecto/prueba_proyecto-master/Pelotita.cpp
+1395954226 source:/home/mac21/Desktop/programaing/proyecto/prueba_proyecto-master/Pelotita.cpp
 	"Pelotita.h"
 
-1395948175 source:/home/mac21/Desktop/programaing/proyecto/prueba_proyecto-master/main.cpp
+1395960930 source:/home/mac21/Desktop/programaing/proyecto/prueba_proyecto-master/main.cpp
 	"SDL/SDL.h"
 	"SDL/SDL_image.h"
 	<cstdlib>
@@ -66,4 +65,25 @@
 	<sstream>
 	<iostream>
 	<fstream>
+	"allien.h"
+	"llama.h"
+	"piranha.h"
+
+1395956003 source:/home/mac21/Desktop/programaing/proyecto/prueba_proyecto-master/allien.cpp
+	"allien.h"
+
+1395956093 /home/mac21/Desktop/programaing/proyecto/prueba_proyecto-master/allien.h
+	"Pelotita.h"
+
+1395959674 source:/home/mac21/Desktop/programaing/proyecto/prueba_proyecto-master/llama.cpp
+	"llama.h"
+
+1395957628 /home/mac21/Desktop/programaing/proyecto/prueba_proyecto-master/llama.h
+	"Pelotita.h"
+
+1395960168 /home/mac21/Desktop/programaing/proyecto/prueba_proyecto-master/piranha.h
+	"Pelotita.h"
+
+1395960179 source:/home/mac21/Desktop/programaing/proyecto/prueba_proyecto-master/piranha.cpp
+	"piranha.h"
 

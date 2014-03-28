@@ -1,6 +1,6 @@
-#include "Pelotita.h"
+#include "allien.h"
 
-Pelotita::Pelotita(int x,int y,int velocidad_x,int velocidad_y,SDL_Surface*surface)
+allien::allien(int x,int y,int velocidad_x,int velocidad_y,SDL_Surface*surface)
 {
     this->x=x;
     this->y=y;
@@ -11,20 +11,15 @@ Pelotita::Pelotita(int x,int y,int velocidad_x,int velocidad_y,SDL_Surface*surfa
     this->width=surface->w;
     this->height=surface->h;
 }
-Pelotita::Pelotita()
-{
 
-}
-
-Pelotita::~Pelotita()
+allien::~allien()
 {
     //dtor
 }
 
-void Pelotita::moverse()
+void allien::moverse()
 {
     this->x-=this->velocidad_x;
+    this->y-=this->velocidad_y;
 
 }
-
-

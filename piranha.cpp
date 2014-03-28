@@ -1,6 +1,6 @@
-#include "Pelotita.h"
+#include "piranha.h"
 
-Pelotita::Pelotita(int x,int y,int velocidad_x,int velocidad_y,SDL_Surface*surface)
+piranha::piranha(int x,int y,int velocidad_x,int velocidad_y,SDL_Surface*surface)
 {
     this->x=x;
     this->y=y;
@@ -11,20 +11,15 @@ Pelotita::Pelotita(int x,int y,int velocidad_x,int velocidad_y,SDL_Surface*surfa
     this->width=surface->w;
     this->height=surface->h;
 }
-Pelotita::Pelotita()
-{
 
-}
-
-Pelotita::~Pelotita()
+piranha::~piranha()
 {
     //dtor
 }
 
-void Pelotita::moverse()
+void piranha::moverse()
 {
     this->x-=this->velocidad_x;
 
+
 }
-
-

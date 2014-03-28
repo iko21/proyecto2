@@ -15,10 +15,11 @@ class Pelotita
         bool en_pantalla;
         int width;
         int height;
+        Pelotita();
         Pelotita(int x,int y,int velocidad_x,
           int velocidad_y,SDL_Surface*surface);
         virtual ~Pelotita();
-        void moverse();
+       virtual void moverse();
     protected:
     private:
 };
